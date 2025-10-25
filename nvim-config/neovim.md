@@ -12,14 +12,7 @@
 
 ## Installation
 
-### Option 1: Install from Ubuntu Repository (Stable)
-
-```bash
-sudo apt update
-sudo apt install neovim
-```
-
-### Option 2: Install Latest Stable Release (Recommended)
+### Install Latest Stable Release (Recommended)
 
 Download and install the latest stable release from the official repository:
 
@@ -29,58 +22,16 @@ sudo apt update
 sudo apt install curl
 
 # Download the latest stable release
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+chmod u+x nvim-linux-x86_64.appimage
+./nvim-linux-x86_64.appimage
 
-# Extract and install
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-sudo ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
+# Expose nvim
+sudo mkdir -p ~/opt/nvim
+sudo mv nvim-linux-x86_64.appimage /opt/nvim/nvim
 
-# Clean up
-rm nvim-linux64.tar.gz
-```
-
-## Installing Additional Dependencies
-
-After installing Neovim, install these required packages:
-
-```bash
-sudo apt install luarocks fzf ripgrep
-```
-
-### Python Provider
-
-```bash
-sudo apt install python3-pip
-pip3 install --user pynvim
-```
-
-### Node.js Provider
-
-```bash
-# Install Node.js (using NodeSource)
-curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt install nodejs
-
-# Install neovim npm package
-sudo npm install -g neovim
-```
-
-### Ripgrep (for fast searching)
-
-```bash
-sudo apt install ripgrep
-```
-
-### Install a Nerd Font
-
-```bash
-# Download and install JetBrainsMono Nerd Font
-mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts
-curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
-unzip JetBrainsMono.zip
-rm JetBrainsMono.zip
-fc-cache -fv
+# Add nvim path to shell config
+export PATH="$PATH:/opt/nvim/"
 ```
 
 ## Verify Installation
@@ -95,10 +46,10 @@ nvim +checkhealth
 
 ## Configuration
 
-Neovim configuration files are located at:
-- `~/.config/nvim/init.lua` (Lua configuration)
+Add Neovim configuration files at:
+- `~/.config/nvim/`
 
-Create the configuration directory:
+Create the configuration directory if not exists:
 
 ```bash
 mkdir -p ~/.config/nvim
