@@ -41,6 +41,12 @@ rm nvim-linux64.tar.gz
 
 ## Installing Additional Dependencies
 
+After installing Neovim, install these required packages:
+
+```bash
+sudo apt install luarocks fzf ripgrep
+```
+
 ### Python Provider
 
 ```bash
